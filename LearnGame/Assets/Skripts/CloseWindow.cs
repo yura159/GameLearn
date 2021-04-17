@@ -5,12 +5,11 @@ using UnityEngine.UI;
 
 public class CloseWindow : MonoBehaviour
 {
-    public bool next = false;
     private void Start()
     {
         GetComponent<Button>().onClick.AddListener(() =>
         {
-            Window.Instance.CloseWindow(next);
+            Window.Instance.CloseWindow();
         });
     }
 }

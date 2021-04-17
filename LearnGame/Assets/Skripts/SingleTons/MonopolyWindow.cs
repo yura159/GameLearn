@@ -79,7 +79,7 @@ public class MonopolyWindow : Window
         }
     }
 
-    public override void CloseWindow(bool next = true)
+    public override void CloseWindow()
     {
         if (namesPlayers[0] == PhotonNetwork.NickName)
         {
