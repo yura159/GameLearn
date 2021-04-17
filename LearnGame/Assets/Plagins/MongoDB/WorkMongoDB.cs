@@ -33,7 +33,7 @@ public class WorkMogoDb : MonoBehaviour
     }
 
 
-    public static string GetData(string name, string path)
+    public static string GetData(string name)
     {
         try
         {
@@ -51,20 +51,6 @@ public class WorkMogoDb : MonoBehaviour
         var filter = new BsonDocument() { { "name", name } };
         var jsonFormat = collection.Find(filter).FirstOrDefault();
         return jsonFormat is null ? null : jsonFormat.GetValue(2).ToString();
-    }
-
-    public static void GetImages(string name, string path)
-    {
-        var gridFS = new GridFSBucket(database);
-        var collection = database.GetCollection<BsonDocument>("data_image");
-        var filter = new BsonDocument() { { "father_name", name } };
-        var nameImages = new List<string>();
-        collection.Find(filter).ForEachAsync(x => nameImages.Add(x.GetValue(2).AsString));
-        foreach (var nameImage in nameImages)
-        {
-            var file = new FileStream(path + "\\" + nameImage, FileMode.OpenOrCreate);
-            gridFS.DownloadToStreamByNameAsync(nameImage, file);
-        }
     }
 
     [System.Obsolete]

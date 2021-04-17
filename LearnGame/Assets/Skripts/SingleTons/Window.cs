@@ -27,11 +27,10 @@ public class Window : MonoBehaviourPunCallbacks
     public void StartPlay(string path)
     {
         WorkMogoDb.Connection();
-        var dataInDatabase = WorkMogoDb.GetData(path, "");
+        var dataInDatabase = WorkMogoDb.GetData(path);
         var jsonFile = dataInDatabase is null ? Resources.Load("Jsons\\" + path).ToString() : dataInDatabase;
         var info = JSON.Parse(jsonFile);
         windows = info["windows"];
-        
     }
 
     private void Update()
