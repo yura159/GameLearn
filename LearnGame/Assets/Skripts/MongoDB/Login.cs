@@ -11,6 +11,15 @@ public class Login : MonoBehaviour
     public Text massage;
 
     private const string playerNamePrefKey = "PlayerName";
+    private Dictionary<string, int> regionsInfo = new Dictionary<string, int>
+    {
+        {"Comunication", 0 },
+        {"Creation", 0 },
+        {"Defence", 0 },
+        {"Problems", 0 },
+        {"Information", 0 },
+        {"Curent", 0 }
+    };
     void Start()
     {
         if (PlayerPrefs.HasKey(playerNamePrefKey)) login.text = PlayerPrefs.GetString(playerNamePrefKey);
@@ -20,6 +29,15 @@ public class Login : MonoBehaviour
             {
                 if(WorkMogoDb.SigIn(login.text, password.text))
                 {
+                    try
+                    {
+                        WorkMogoDb.GetPlayerData(login.text, regionsInfo);
+                    }
+                    catch
+                    {
+                        WorkMogoDb.SetPlayerData(login.text, regionsInfo);
+                    }
+                    PlayerPrefs.SetString(playerNamePrefKey, login.text);
                     SceneManager.LoadScene("Main", LoadSceneMode.Single);
                 }
                 else

@@ -3,6 +3,7 @@
 		{
 			"window_0": {
 				"type": "Slider",
+				"region": "Comunication",
 				"question": "просто перетяни вправо :)",
 				"image": "Vector",
 				"wrongMassage": "Ты дурак!",
@@ -12,20 +13,24 @@
 		},
 		{
 			"window_1": {
-				"type": "Wiki",
-				"question": "введи: 'привет'",
-				"link": "https://www.google.ru/",
-				"answer": "привет"
+				"type": "Slider",
+				"region": "Comunication",
+				"question": "просто перетяни вправо :)",
+				"image": "Vector",
+				"wrongMassage": "Ты дурак!",
+				"rightMassage": "Ты гений!",
+				"result": "true"
 			}
 		},
 		{
 			"window_2": {
 				"type": "Slider",
-				"question": "а теперь влево :)",
+				"region": "Comunication",
+				"question": "просто перетяни вправо :)",
 				"image": "Vector",
 				"wrongMassage": "Ты дурак!",
 				"rightMassage": "Ты гений!",
-				"result": "false"
+				"result": "true"
 			}
 		}
 	]
