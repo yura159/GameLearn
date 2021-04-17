@@ -1,0 +1,44 @@
+﻿{
+	"windows": [
+		{
+			"window_0": {
+				"type": "MoveItems",
+				"question": "Вопрос?",
+				"text_1": "текст 1",
+				"text_2": "текст 2",
+				"text_3": "текст 3",
+				"text_4": "текст 4",
+				"item_1": "Вариант 1",
+				"item_2": "Вариант 2",
+				"item_3": "Вариант 3",
+				"item_4": "Вариант 4",
+				"number": "1/3",
+				"rightAnswer": "1-1 2-2 3-3 4-4"
+			}
+		},
+		{
+			"window_1": {
+				"type": "MultiAnswers",
+				"question": "Вопрос?",
+				"variant_1": "Вариант ответа 1",
+				"variant_2": "Вариант ответа 2",
+				"variant_3": "Вариант ответа 3",
+				"variant_4": "Вариант ответа 4",
+				"number": "2/3",
+				"rightAnswer": "1 2 3"
+			}
+		},
+		{
+			"window_2": {
+				"type": "OneRightAnswer",
+				"question": "Вопрос???",
+				"variant_1": "Вариант ответа 1",
+				"variant_2": "Вариант ответа 2",
+				"variant_3": "Вариант ответа 3",
+				"variant_4": "Вариант ответа 4",
+				"number": "3/3",
+				"rightAnswer": "4"
+			}
+		}
+	]
+}
