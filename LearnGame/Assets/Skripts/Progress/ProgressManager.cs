@@ -14,8 +14,8 @@ public class ProgressManager : MonoBehaviour
         {"Creation", 0 },
         {"Defence", 0 },
         {"Problems", 0 },
-        {"Information", 0 }
-        //{"Curent", 0 }
+        {"Information", 0 },
+        {"Curent", 0 }
     };
     private const string playerNamePrefKey = "PlayerName";
     void Start()
