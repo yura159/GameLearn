@@ -17,6 +17,7 @@ public class Window : MonoBehaviourPunCallbacks
     private int count;
     private const string playerNamePrefKey = "PlayerName";
     private bool first = true;
+    private bool isDigital = false;
 
     private Dictionary<string, int> regionsInfo = new Dictionary<string, int>
     {
@@ -46,8 +47,13 @@ public class Window : MonoBehaviourPunCallbacks
 
         var playerName = PlayerPrefs.GetString(playerNamePrefKey);
         regionsInfo = WorkMogoDb.GetPlayerData(playerName, regionsInfo);
-        if(path == "Digital")
+        if (path == "Digital")
+        {
             curent = regionsInfo["Curent"] - 1;
+            isDigital = true;
+        }
+        else
+            isDigital = false;
     }
 
     private void Update()
@@ -103,8 +109,11 @@ public class Window : MonoBehaviourPunCallbacks
         if (!next)
         {
             windows = null;
-            regionsInfo["Curent"] = curent;
-            SaveInfo();
+            if (isDigital)
+            {
+                regionsInfo["Curent"] = curent;
+                SaveInfo();
+            }
             curent = -1;
         }
     }
