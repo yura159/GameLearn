@@ -12,7 +12,7 @@ public class MonopolyWindow : Window
     public void StartPlay(string path, List<string> players)
     {
         this.namesPlayers = players;
-        var jsonFile = Resources.Load("Jsons\\" + path).ToString();
+        var jsonFile =  Resources.Load("Jsons\\" + path).ToString();
         var info = JSON.Parse(jsonFile);
         windows = info["windows"];
 

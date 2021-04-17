@@ -4,6 +4,7 @@ using UnityEngine;
 using SimpleJSON;
 using System.Linq;
 using Photon.Pun;
+using System.Text.Json;
 
 public class Window : MonoBehaviourPunCallbacks
 {
@@ -25,7 +26,9 @@ public class Window : MonoBehaviourPunCallbacks
     /// <param name="path">путь до файла без расширения</param>
     public void StartPlay(string path)
     {
-        var jsonFile = Resources.Load("Jsons\\" + path).ToString();
+        WorkMogoDb.Connection();
+        var dataInDatabase = WorkMogoDb.GetData(path, "");
+        var jsonFile = dataInDatabase is null ? Resources.Load("Jsons\\" + path).ToString() : dataInDatabase;
         var info = JSON.Parse(jsonFile);
         windows = info["windows"];
         

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
+using SimpleJSON;
 
 public class WorkMogoDb : MonoBehaviour
 { 
@@ -34,7 +35,14 @@ public class WorkMogoDb : MonoBehaviour
 
     public static string GetData(string name, string path)
     {
-        return GetJson(name);
+        try
+        {
+            return GetJson(name);
+        }
+        catch
+        {
+            return null;
+        }
     }
 
     public static string GetJson(string name)
@@ -42,7 +50,7 @@ public class WorkMogoDb : MonoBehaviour
         var collection = database.GetCollection<BsonDocument>("data_json");
         var filter = new BsonDocument() { { "name", name } };
         var jsonFormat = collection.Find(filter).FirstOrDefault();
-        return jsonFormat is null ? null : jsonFormat.GetValue(2).ToJson();
+        return jsonFormat is null ? null : jsonFormat.GetValue(2).ToString();
     }
 
     public static void GetImages(string name, string path)
