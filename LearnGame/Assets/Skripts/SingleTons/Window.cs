@@ -39,14 +39,15 @@ public class Window : MonoBehaviourPunCallbacks
     public void StartPlay(string path)
     {
         WorkMogoDb.Connection();
-        var dataInDatabase = WorkMogoDb.GetData(path, "");
+        var dataInDatabase = WorkMogoDb.GetData(path);
         var jsonFile = dataInDatabase is null ? Resources.Load("Jsons\\" + path).ToString() : dataInDatabase;
         var info = JSON.Parse(jsonFile);
         windows = info["windows"];
 
         var playerName = PlayerPrefs.GetString(playerNamePrefKey);
         regionsInfo = WorkMogoDb.GetPlayerData(playerName, regionsInfo);
-        curent = regionsInfo["Curent"];
+        if(path == "Digital")
+            curent = regionsInfo["Curent"] - 1;
     }
 
     private void Update()
@@ -69,7 +70,7 @@ public class Window : MonoBehaviourPunCallbacks
             {
                 windows = null;
                 curent = -1;
-                regionsInfo["Curent"] = curent;
+                regionsInfo["Curent"] = curent + 1;
                 SaveInfo();
             }
         }
@@ -113,7 +114,13 @@ public class Window : MonoBehaviourPunCallbacks
         if (res == true)
         {
             result += 1;
-            UpdateRegion();
+            try {
+                UpdateRegion();
+            }
+            catch
+            {
+
+            }
         }
     }
 

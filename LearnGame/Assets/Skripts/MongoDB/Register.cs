@@ -18,7 +18,7 @@ public class Register : MonoBehaviour
         {"Defence", 0 },
         {"Problems", 0 },
         {"Information", 0 },
-        {"Curent", 0 }
+        {"Curent", 0}
     };
     void Start()
     {
